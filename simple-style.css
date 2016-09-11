@@ -8,7 +8,11 @@ body {
     margin: auto auto 100px;
 }
 
-.example{
+.example {
     margin-left: 20px;
     margin-top: 30px;
+}
+
+.example p{
+    max-width: 600px;
 }
