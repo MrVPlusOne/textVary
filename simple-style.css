@@ -25,3 +25,7 @@ body {
 .example video{
     border: solid black 1px;
 }
+
+li{
+    margin-bottom: 20px;
+}
