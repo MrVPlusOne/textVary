@@ -13,16 +13,16 @@ Helps you write better GRE/TOEFL essays by detecting your repeating phrases.
 
 ## How it works
 
-To get the phrase usage statistics from the input:
+To get statistics of phrase usage from the input:
 
-  * TextVary first parses the essay into a sequence of *SentencePart*s, each *SentencePart* is further composed of many *WordUsage*s
-  * A *WordUsage* contains information about the original form and position of a word from the essay, as well as the stem of that word
-  * The parser is written in a parser-combinator library [FastParse](https://github.com/lihaoyi/fastparse)
-  * The stemming uses a combination of Porter's algorithm and an irregular word list. The scala implementation of Porter's algorithm was copied from [here](https://github.com/scalanlp/chalk/blob/master/src/main/scala/chalk/text/analyze/PorterStemmer.scala)
-  * TextVary stores a collection of set phrases in a Finite State Automaton(FSA). The words in those phrases are in their stem forms.
-  * To detect set phrases, textVary uses a greedy algorithm, trying to find the longest phrases accepted by the FSA.
+  * TextVary first parses the essay into a sequence of *SentencePart*s, each *SentencePart* is composed of many *WordUsage*s
+  * A *WordUsage* contains information about a word's original form and position in the essay, as well as the stem of that word. The stem is used to match words and phrases in later stages.
+    * The parser is written in the parser-combinator library [FastParse](https://github.com/lihaoyi/fastparse)
+    * The stemming strategy makes use of a combination of Porter's algorithm and an irregular word list. The scala implementation of Porter's algorithm was copied from [here](https://github.com/scalanlp/chalk/blob/master/src/main/scala/chalk/text/analyze/PorterStemmer.scala)
+  * TextVary stores a collection of set phrases as a Finite State Automaton(FSA). The words in those phrases are reduced to their stem forms.
+  * To detect set phrases, textVary uses a greedy algorithm, trying to find the longest phrases accepted by the FSA. A set phrase can not span across the boundaries of *SentencePart*s.
 
-To turn those statistics into visual feedback:
+To turn the statistics into visual feedback:
 
   * The UI is implemented in a Reactive Programming (RP) style.
     ```
@@ -30,7 +30,7 @@ To turn those statistics into visual feedback:
                      UI input information | ~> visual data >> pain visual elements on top of the input
     ```
 
-  * As the frequency of a word or phrase increases, its background color varies from a translucent yellow to a transparent red. In this way, if a usage appears again and again in an essay, its highlight eventually becomes unnoticeable. This is the desired behaviour because it helps the user focus on avoiding using the same expression twice or the third time, but ignore the repeating use of topic words or key words.
+  * As the frequency of a word or phrase increases, its background color varies from a translucent yellow to a transparent red. In this way, if a usage appears again and again in an essay, its highlight will eventually become unnoticeable. This is the desired behaviour because it helps the user focus on avoiding using the same expression twice or the third time, but ignore the repeating use of topic words or key words.
    * ![2 cars](https://github.com/MrVPlusOne/textVary-storage/blob/master/2cars.png?raw=true)
    * ![4 cars](https://github.com/MrVPlusOne/textVary-storage/blob/master/4cars.png?raw=true)
    * ![8 cars](https://github.com/MrVPlusOne/textVary-storage/blob/master/8cars.png?raw=true)
