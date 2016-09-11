@@ -1,17 +1,17 @@
 # textVary
 Helps you write better GRE/TOEFL essays by detecting your repeating phrases.
 
-### What is textVary
+## What is textVary
 
 [Introduction in English (英文介绍)](https://mrvplusone.github.io/textVary/)
 
 [中文介绍 (Introduction in Chinese)](https://mrvplusone.github.io/textVary/index_zh.html)
 
-### Download
+## Download
 
 [textVary-1.0.zip](https://github.com/MrVPlusOne/textVary/releases/download/v1.0/textVary-1.0.zip)
 
-### How it works
+## How it works
 
 To get the phrase usage statistics from the input:
 
@@ -36,7 +36,7 @@ To turn those statistics into visual feedback:
    * ![8 cars](https://github.com/MrVPlusOne/textVary-storage/blob/master/8cars.png?raw=true)
 
 
-### Licence
+## Licence
 
 The MIT License (MIT)
 
