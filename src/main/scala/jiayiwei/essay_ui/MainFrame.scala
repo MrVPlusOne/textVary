@@ -73,7 +73,7 @@ class MainFrame(initContent: String, editSize: Dimension, font: Font) {
    * @return
    */
   def start() = {
-    new JFrame(ProjectSettings.projectName){
+    val frame = new JFrame(ProjectSettings.projectName){
       setContentPane(
         vContainer(
           hContainer(
@@ -89,9 +89,25 @@ class MainFrame(initContent: String, editSize: Dimension, font: Font) {
       )
 
       pack()
-      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
       setVisible(true)
     }
+
+    frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE)
+
+    import javax.swing.JOptionPane
+    /*Some piece of code*/
+    frame.addWindowListener(new java.awt.event.WindowAdapter() {
+      override def windowClosing(windowEvent: java.awt.event.WindowEvent ) {
+        if (JOptionPane.showConfirmDialog(frame,
+          "Are you sure to exit textVary?", "Confirm exit",
+          JOptionPane.YES_NO_OPTION,
+          JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+          System.exit(0)
+        }
+      }
+    })
+
+    frame
   }
 
   def hContainer(components: JComponent*) = {
