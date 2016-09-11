@@ -1,0 +1,14 @@
+html{
+    font-family: sans-serif;
+}
+
+body {
+    width: 800px;
+    max-width: 90vw;
+    margin: auto;
+}
+
+.example{
+    margin-left: 20px;
+    margin-top: 30px;
+}
