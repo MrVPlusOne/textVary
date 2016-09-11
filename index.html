@@ -41,6 +41,35 @@
         download from github
     </a>
 
+<h2>How it works</h2>
+    <p>To get statistics of phrase usage from the input:</p>
+    <ul>
+        <li>TextVary first parses the essay into a sequence of <em>SentencePart</em>s, each <em>SentencePart</em> is composed of many <em>WordUsage</em>s</li>
+        <li>A <em>WordUsage</em> contains information about a word's original form and position in the essay, as well as the stem of that word. The stem is used to match words and phrases in later stages.
+
+            <ul>
+                <li>The parser is written in the parser-combinator library <a href="https://github.com/lihaoyi/fastparse">FastParse</a></li>
+                <li>The stemming strategy makes use of a combination of Porter's algorithm and an irregular word list. The scala implementation of Porter's algorithm was copied from <a href="https://github.com/scalanlp/chalk/blob/master/src/main/scala/chalk/text/analyze/PorterStemmer.scala">here</a></li>
+            </ul></li>
+        <li>TextVary stores a collection of set phrases as a Finite State Automaton(FSA). The words in those phrases are reduced to their stem forms.</li>
+        <li>To detect set phrases, textVary uses a greedy algorithm, trying to find the longest phrases accepted by the FSA. A set phrase can not span across the boundaries of <em>SentencePart</em>s.</li>
+    </ul>
+    <p>To turn the statistics into visual feedback:</p>
+    <ul>
+        <li><p>The UI is implemented in a Reactive Programming (RP) style.</p>
+
+    <pre><code>The current input ~&gt; usage statistics |
+        UI input information | ~&gt; visual data &gt;&gt; pain visual elements on top of the input
+    </code></pre></li>
+        <li><p>As the frequency of a word or phrase increases, its background color varies from a translucent yellow to a transparent red. In this way, if a usage appears again and again in an essay, its highlight will eventually become unnoticeable. This is the desired behaviour because it helps the user focus on avoiding using the same expression twice or the third time, but ignore the repeating use of topic words or key words.</p>
+
+            <ul>
+                <li><a href="https://github.com/MrVPlusOne/textVary-storage/blob/master/2cars.png?raw=true" target="_blank"><img src="https://github.com/MrVPlusOne/textVary-storage/raw/master/2cars.png?raw=true" alt="2 cars" style="max-width:100%;"></a></li>
+                <li><a href="https://github.com/MrVPlusOne/textVary-storage/blob/master/4cars.png?raw=true" target="_blank"><img src="https://github.com/MrVPlusOne/textVary-storage/raw/master/4cars.png?raw=true" alt="4 cars" style="max-width:100%;"></a></li>
+                <li><a href="https://github.com/MrVPlusOne/textVary-storage/blob/master/8cars.png?raw=true" target="_blank"><img src="https://github.com/MrVPlusOne/textVary-storage/raw/master/8cars.png?raw=true" alt="8 cars" style="max-width:100%;"></a></li>
+            </ul></li>
+    </ul>
+
 <h2>About the author</h2>
 
 <p> TextVary is written by Jiayi Wei(魏家一), here is <a href="https://github.com/MrVPlusOne">his github homepage</a>.</p>
