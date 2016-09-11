@@ -25,10 +25,8 @@ To get statistics of phrase usage from the input:
 To turn the statistics into visual feedback:
 
   * The UI is implemented in a Reactive Programming (RP) style.
-    ```
-    The current input ~> usage statistics |
-                     UI input information | ~> visual data >> pain visual elements on top of the input
-    ```
+    * (The current input ~> usage statistics) + UI input information ~> visual data ~> draw visual elements on top of the input
+
 
   * As the frequency of a word or phrase increases, its background color varies from a translucent yellow to a transparent red. In this way, if a usage appears again and again in an essay, its highlight will eventually become unnoticeable. This is the desired behaviour because it helps the user focus on avoiding using the same expression twice or the third time, but ignore the repeating use of topic words or key words.
    * ![2 cars](https://github.com/MrVPlusOne/textVary-storage/blob/master/2cars.png?raw=true)
