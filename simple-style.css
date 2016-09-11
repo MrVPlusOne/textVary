@@ -5,7 +5,7 @@ html{
 body {
     width: 800px;
     max-width: 90vw;
-    margin: auto;
+    margin: auto auto 100px;
 }
 
 .example{
