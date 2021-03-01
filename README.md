@@ -11,6 +11,8 @@ Helps you write better GRE/TOEFL essays by detecting your repeating phrases.
 
 [textVary-1.0.zip](https://github.com/MrVPlusOne/textVary/releases/download/v1.0/textVary-1.0.zip)
 
+In order to run textVary, make sure you have [installed Java](https://www.java.com/en/download/) on your computer. After unzipping the zip file, simply click the `textVary.jar` file to run the application.
+
 ## How it works
 
 To get statistics of phrase usage from the input:
